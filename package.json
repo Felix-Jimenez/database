@@ -1,18 +1,18 @@
 {
-  "name": "database",
+  "name": "sequelize",
   "version": "1.0.0",
-  "description": "connect to database postgress",
+  "description": "test for sequelize",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "database",
-    "postgress"
-  ],
   "author": "feliche",
   "license": "ISC",
   "dependencies": {
-    "pg": "^8.11.5"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.11.5",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3"
   }
 }
