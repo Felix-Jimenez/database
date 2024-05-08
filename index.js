@@ -12,6 +12,20 @@ app.get('/', (req, res) => {
   res.send('Hi database II class');
 });
 
+app.get('/author', async(req, res) => {
+  try{
+    const authors = await Author.findAll();
+    res.status(200).json({
+      authors
+    });
+  }catch(error){
+    console.log("ERROR", error);
+    res.status(500).json({
+      message: 'Internal server error'
+    });
+  }
+});
+
 app.post('/author', async (req, res) => {
     let nombre = req.body.name;
     let edad = req.body.age;
@@ -20,7 +34,7 @@ app.post('/author', async (req, res) => {
       res.status(400).send('Falto edad o nombre');
     }
     try {
-      let almacenar = await Author.create({
+      const almacenar = await Author.create({
         name: nombre,
         age: edad
       });
@@ -40,7 +54,7 @@ app.post('/book', async(req, res) => {
     const cantPages = req.body.numberPages ? req.body.numberPages : 0;
     const author = req.body.authorId;
 
-    if(!name || !authorId) {
+    if(!name || !req.body.authorId) {
       res.status(400).json({
         message: "Falta id de autor o nombre del libro"
       })
